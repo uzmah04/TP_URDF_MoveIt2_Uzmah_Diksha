@@ -2,4 +2,5 @@
 <robot name="robotic_arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
     <xacro:include filename="common_properties.xacro"/>
     <xacro:include filename="arm.xacro"/>
+    <xacro:property name="PI" value="3.14159265358979"/>
 </robot>

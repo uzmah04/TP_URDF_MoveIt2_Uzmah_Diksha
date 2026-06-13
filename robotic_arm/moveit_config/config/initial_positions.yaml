@@ -1,0 +1,9 @@
+# Default initial positions for robotic_arm's ros2_control fake system
+
+initial_positions:
+  base_plate_to_link3: 0
+  base_plate_to_vertical_drive_arm: 0
+  claw_support_to_right_finger: 0
+  forward_drive_arm_to_horizontal_arm: 0
+  forward_drive_arm_to_triangular_link: 0
+  triangular_link_to_link: 0

@@ -331,7 +331,7 @@
         <child link="horizontal_arm"/>
         <origin rpy="0 0 0" xyz="0 -0.015 0.78"/>
         <axis xyz="1 0 0"/>
-        <limit lower="-2.617" upper="2.617" effort="10.0" velocity="1.0"/>
+        <limit lower="-0.6796" upper="0.3325" effort="10.0" velocity="1.0"/>
     </joint>
 
     <joint name="horizontal_arm_to_claw_support" type="fixed">
@@ -346,7 +346,7 @@
         <child link="triangular_link"/>
         <origin rpy="0 0 0" xyz="0.15 -0.42 1.03"/>
         <axis xyz="1 0 0"/>
-        <limit lower="-2.094" upper="2.094" effort="5.0" velocity="0.8"/>
+        <limit lower="-0.4743" upper="0.2661" effort="5.0" velocity="0.8"/>
     </joint>
 
     <!-- FIXED: Added limits -->
@@ -370,7 +370,7 @@
         <child link="vertical_drive_arm"/>
         <origin rpy="0 0 0" xyz="-0.125 0.07 0.3"/>
         <axis xyz="1 0 0"/>
-        <limit lower="-2.094" upper="2.094" effort="5.0" velocity="0.8"/>
+        <limit lower="0" upper="-0.1967" effort="5.0" velocity="0.8"/>
     </joint>
 
     <!-- FIXED: Added limits -->
