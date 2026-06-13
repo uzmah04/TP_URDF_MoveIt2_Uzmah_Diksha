@@ -1,0 +1,6 @@
+*.blend1
+*.pyc
+.vscode/
+build/
+install/
+log/

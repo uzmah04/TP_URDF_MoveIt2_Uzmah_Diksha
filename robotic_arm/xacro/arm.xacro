@@ -1,0 +1,425 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <!-- ==================== LINKS ==================== -->
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <mesh filename="package://robotic_arm/meshes/basement.STL" scale="0.01 0.01 0.01"/>
+            </geometry>
+            <origin rpy="0 0 0" xyz="-0.5 -0.5 0"/>
+            <material name="blue"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.51" length="0.31"/>
+            </geometry>
+            <origin rpy="0 0 0" xyz="-0.021 0 0.155"/>
+        </collision>
+        <inertial>
+            <mass value="0.115956"/>
+            <inertia ixx="0.000073418922" ixy="-0.000000007289" ixz="0.000000000960"
+                    iyy="0.000067864916" iyz="-0.000000201342"
+                    izz="0.000122999190"/>
+        </inertial>
+    </link>
+
+    <link name="base_plate">
+        <visual>
+            <geometry>
+                <mesh filename="package://robotic_arm/meshes/base_plate.STL" scale="0.01 0.01 0.01"/>
+            </geometry>
+            <origin xyz="-0.39 -0.39 -0.56" rpy="0 0 0"/>
+            <material name="grey"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.42" length="0.58"/>
+            </geometry>
+            <origin xyz="0 -0.032 0.292" rpy="0 0 0"/>
+        </collision>
+        <inertial>
+            <mass value="0.11866"/>
+            <inertia ixx="0.000000050137" ixy="0.000000004517" ixz="-0.000000004202"
+                    iyy="0.000059873492" iyz="0.000005078977"
+                    izz="0.000069684610"/>
+        </inertial>
+    </link>
+
+    <link name="forward_drive_arm">
+        <visual>
+            <geometry>
+                <mesh filename="package://robotic_arm/meshes/forward_drive_arm.STL" scale="0.01 0.01 0.01"/>
+            </geometry>
+            <origin rpy="0 -${PI/2} ${PI/2}" xyz="0.19 0.06 -0.08"/>
+            <material name="blue"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.3 0.16 0.925"/>
+            </geometry>
+            <origin rpy="0 0 0" xyz="0.045 -0.01 0.383"/>
+        </collision>
+        <inertial>
+            <mass value="0.035532"/>
+            <inertia ixx="0.000002806806" ixy="0.000000402174" ixz="0.000000766537"
+                    iyy="0.000025544408" iyz="-0.000000011555"
+                    izz="0.000027296158"/>
+        </inertial>
+    </link>
+
+    <link name="horizontal_arm">
+        <visual>
+            <geometry>
+                <mesh filename="package://robotic_arm/meshes/horizontal_arm.STL" scale="0.01 0.01 0.01"/>
+            </geometry>
+            <origin rpy="${PI/2} 0 ${PI/2}" xyz="-0.03 -0.4 -0.06"/>
+            <material name="grey"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.09 0.151 1.28"/>
+            </geometry>
+            <origin rpy="${PI/2} 0 0" xyz="0.01 0.24 0.0156"/>
+        </collision>
+        <inertial>
+            <mass value="0.023817"/>
+            <inertia ixx="0.000000518581" ixy="0.000000342828" ixz="-0.00000000000012"
+                    iyy="0.000032332078" iyz="0.00000000000009"
+                    izz="0.000032634236"/>
+        </inertial>
+    </link>
+
+    <link name="claw_support">
+        <visual>
+            <geometry>
+                <mesh filename="package://robotic_arm/meshes/claw_support.STL" scale="0.01 0.01 0.01"/>
+            </geometry>
+            <origin rpy="0 0 ${PI/2}" xyz="0 -0.05 -0.15"/>
+            <material name="blue"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.55 0.26 0.385"/>
+            </geometry>
+            <origin rpy="0 0 ${PI/2}" xyz="-0.125 0.22 0.043"/>
+        </collision>
+        <inertial>
+            <mass value="0.018141"/>
+            <inertia ixx="0.000003016617" ixy="-0.000000109945" ixz="0.000001001895"
+                    iyy="0.000006130769" iyz="0.000000347316"
+                    izz="0.000004757345"/>
+        </inertial>
+    </link>
+
+    <link name="triangular_link">
+        <visual>
+            <geometry>
+                <mesh filename="package://robotic_arm/meshes/triangular_link.STL" scale="0.01 0.01 0.01"/>
+            </geometry>
+            <origin rpy="0 ${PI} 0" xyz="0 0 0"/>
+            <material name="blue"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.59 0.09 0.3"/>
+            </geometry>
+            <origin rpy="0 0 ${PI/2}" xyz="-0.05 0.295 -0.145"/>
+        </collision>
+        <inertial>
+            <mass value="0.011737"/>
+            <inertia ixx="0.000002845197" ixy="-0.000000191786" ixz="0.000000044300"
+                    iyy="0.000000588168" iyz="-0.000000295192"
+                    izz="0.000002377722"/>
+        </inertial>
+    </link>
+
+    <link name="link">
+        <visual>
+            <geometry>
+                <mesh filename="package://robotic_arm/meshes/link.STL" scale="0.01 0.01 0.01"/>
+            </geometry>
+            <origin rpy="${PI/2} 0 ${PI/2}" xyz="0 0 0"/>
+            <material name="grey"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.06 0.12 0.921"/>
+            </geometry>
+            <origin rpy="${PI/2} 0 0" xyz="0.025 0.468 0.0605"/>
+        </collision>
+        <inertial>
+            <mass value="0.007673"/>
+            <inertia ixx="0.000000061348" ixy="-0.000000000001" ixz="0.00000000000018"
+                    iyy="0.000006695415" iyz="-0.00000000000002"
+                    izz="0.000067270164"/>
+        </inertial>
+    </link>
+
+    <link name="vertical_drive_arm">
+        <visual>
+            <geometry>
+                <mesh filename="package://robotic_arm/meshes/vertical_drive_arm.STL" scale="0.01 0.01 0.01"/>
+            </geometry>
+            <origin rpy="${PI/2} 0 -${PI/2}" xyz="0 0 0"/>
+            <material name="blue"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.08 0.468 0.14"/>
+            </geometry>
+            <origin rpy="0 0 0" xyz="-0.04 0.234 -0.0665"/>
+        </collision>
+        <inertial>
+            <mass value="0.007797"/>
+            <inertia ixx="0.000000135296" ixy="0.00000000000002" ixz="0.000000003570"
+                    iyy="0.000001323142" iyz="0.00000000000001"
+                    izz="0.000001390330"/>
+        </inertial>
+    </link>
+
+    <link name="link2">
+        <visual>
+            <geometry>
+                <mesh filename="package://robotic_arm/meshes/link.STL" scale="0.01 0.01 0.01"/>
+            </geometry>
+            <origin rpy="${PI} -${PI/2} ${PI}" xyz="0 0 0"/>
+            <material name="grey"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.121 0.06 0.921"/>
+            </geometry>
+            <origin rpy="0 0 ${PI/2}" xyz="-0.025 -0.0605 -0.468"/>
+        </collision>
+        <inertial>
+            <mass value="0.007673"/>
+            <inertia ixx="0.000000061348" ixy="-0.000000000001" ixz="0.00000000000018"
+                    iyy="0.000006695415" iyz="-0.00000000000002"
+                    izz="0.000067270164"/>
+        </inertial>
+    </link>
+
+    <link name="link3">
+        <visual>
+            <geometry>
+                <mesh filename="package://robotic_arm/meshes/link.STL" scale="0.01 0.01 0.01"/>
+            </geometry>
+            <origin rpy="-${PI} ${PI/2} 0" xyz="0 0 0"/>
+            <material name="grey"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.121 0.06 0.921"/>
+            </geometry>
+            <origin rpy="0 0 ${PI/2}" xyz="-0.025 -0.0605 -0.468"/>
+        </collision>
+        <inertial>
+            <mass value="0.007673"/>
+            <inertia ixx="0.000000061348" ixy="-0.000000000001" ixz="0.00000000000018"
+                    iyy="0.000006695415" iyz="-0.00000000000002"
+                    izz="0.000067270164"/>
+        </inertial>
+    </link>
+
+    <link name="servo_plate">
+        <visual>
+            <geometry>
+                <mesh filename="package://robotic_arm/meshes/servo_plate.STL" scale="0.01 0.01 0.01"/>
+            </geometry>
+            <origin rpy="0 ${PI/2} 0" xyz="0 0 0"/>
+            <material name="grey"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.262 0.03 0.342"/>
+            </geometry>
+            <origin rpy="0 0 ${PI/2}" xyz="0.01 0.131 -0.171"/>
+        </collision>
+        <inertial>
+            <mass value="0.003430"/>
+            <inertia ixx="0.000000249079" ixy="0" ixz="0.000000000016"
+                    iyy="0.000000386663" iyz="0"
+                    izz="0.000000632241"/>
+        </inertial>
+    </link>
+
+    <link name="servo_plate2">
+        <visual>
+            <geometry>
+                <mesh filename="package://robotic_arm/meshes/servo_plate.STL" scale="0.01 0.01 0.01"/>
+            </geometry>
+            <origin rpy="${PI} ${PI/2} 0" xyz="0 0 0"/>
+            <material name="grey"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.262 0.03 0.342"/>
+            </geometry>
+            <origin rpy="0 0 ${PI/2}" xyz="-0.01 -0.131 -0.171"/>
+        </collision>
+        <inertial>
+            <mass value="0.003430"/>
+            <inertia ixx="0.000000249079" ixy="0" ixz="0.000000000016"
+                    iyy="0.000000386663" iyz="0"
+                    izz="0.000000632241"/>
+        </inertial>
+    </link>
+
+    <link name="right_finger">
+        <visual>
+            <geometry>
+                <mesh filename="package://robotic_arm/meshes/right_finger.STL" scale="0.01 0.01 0.01"/>
+            </geometry>
+            <origin rpy="0 0 -${PI/2}" xyz="-0.1 0.5 -0.1"/>
+            <material name="grey"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.59 0.145 0.092"/>
+            </geometry>
+            <origin rpy="0 0 -${PI/2}" xyz="-0.03 0.205 -0.054"/>
+        </collision>
+        <inertial>
+            <mass value="0.003984"/>
+            <inertia ixx="0.000000064789" ixy="-0.000000085551" ixz="0.000000045044"
+                    iyy="0.000001178072" iyz="0.000000010417"
+                    izz="0.000001218606"/>
+        </inertial>
+    </link>
+
+    <link name="left_finger">
+        <visual>
+            <geometry>
+                <mesh filename="package://robotic_arm/meshes/left_finger.STL" scale="0.01 0.01 0.01"/>
+            </geometry>
+            <origin rpy="0 0 -${PI/2}" xyz="-0.04 0.5 -0.1"/>
+            <material name="grey"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.59 0.146 0.092"/>
+            </geometry>
+            <origin rpy="0 0 -${PI/2}" xyz="0.034 0.205 -0.054"/>
+        </collision>
+        <inertial>
+            <mass value="0.003779"/>
+            <inertia ixx="0.000000062449" ixy="0.000000073172" ixz="0.000000042028"
+                    iyy="0.000001093482" iyz="-0.000000010019"
+                    izz="0.000001132166"/>
+        </inertial>
+    </link>
+
+
+    <!-- ==================== JOINTS ==================== -->
+
+    <joint name="base_link_to_base_plate" type="fixed">
+        <parent link="base_link"/>
+        <child link="base_plate"/>
+        <origin rpy="0 0 0" xyz="0.01 -0.01 0.307"/>
+    </joint>
+
+    <joint name="base_plate_to_forward_drive_arm" type="fixed">
+        <parent link="base_plate"/>
+        <child link="forward_drive_arm"/>
+        <origin rpy="0 0 0" xyz="-0.025 0.036 0.36"/>
+    </joint>
+
+    <!-- FIXED: Added limits -->
+    <joint name="forward_drive_arm_to_horizontal_arm" type="revolute">
+        <parent link="forward_drive_arm"/>
+        <child link="horizontal_arm"/>
+        <origin rpy="0 0 0" xyz="0 -0.015 0.78"/>
+        <axis xyz="1 0 0"/>
+        <limit lower="-2.617" upper="2.617" effort="10.0" velocity="1.0"/>
+    </joint>
+
+    <joint name="horizontal_arm_to_claw_support" type="fixed">
+        <parent link="horizontal_arm"/>
+        <child link="claw_support"/>
+        <origin rpy="0 0 0" xyz="0.14 0.82 0.015"/>
+    </joint>
+
+    <!-- FIXED: Added limits -->
+    <joint name="forward_drive_arm_to_triangular_link" type="revolute">
+        <parent link="forward_drive_arm"/>
+        <child link="triangular_link"/>
+        <origin rpy="0 0 0" xyz="0.15 -0.42 1.03"/>
+        <axis xyz="1 0 0"/>
+        <limit lower="-2.094" upper="2.094" effort="5.0" velocity="0.8"/>
+    </joint>
+
+    <!-- FIXED: Added limits -->
+    <joint name="triangular_link_to_link" type="revolute">
+        <parent link="triangular_link"/>
+        <child link="link"/>
+        <origin rpy="0 0 0" xyz="-0.05 0.46 -0.125"/>
+        <axis xyz="1 0 0"/>
+        <limit lower="-2.094" upper="2.094" effort="3.0" velocity="0.5"/>
+    </joint>
+
+    <joint name="claw_support_to_link" type="fixed">
+        <parent link="claw_support"/>
+        <child link="link"/>
+        <origin rpy="0 0 0" xyz="0.05 0.76 -0.11"/>
+    </joint>
+
+    <!-- FIXED: Added limits -->
+    <joint name="base_plate_to_vertical_drive_arm" type="revolute">
+        <parent link="base_plate"/>
+        <child link="vertical_drive_arm"/>
+        <origin rpy="0 0 0" xyz="-0.125 0.07 0.3"/>
+        <axis xyz="1 0 0"/>
+        <limit lower="-2.094" upper="2.094" effort="5.0" velocity="0.8"/>
+    </joint>
+
+    <!-- FIXED: Added limits -->
+    <joint name="vertical_drive_arm_to_link2" type="fixed">
+        <parent link="vertical_drive_arm"/>
+        <child link="link2"/>
+        <origin rpy="0 0 0" xyz="0.05 -0.46 -0.005"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="-2.094" upper="2.094" effort="3.0" velocity="0.5"/>
+    </joint>
+
+    <!-- FIXED: Added limits -->
+    <joint name="base_plate_to_link3" type="revolute">
+        <parent link="base_plate"/>
+        <child link="link3"/>
+        <origin rpy="-0.03 0 0" xyz="0.175 -0.255 1.39"/>
+        <axis xyz="1 0 0"/>
+        <limit lower="-1.094" upper="1.094" effort="3.0" velocity="0.5"/>
+    </joint>
+
+    <joint name="base_plate_to_servo_plate" type="fixed">
+        <parent link="base_plate"/>
+        <child link="servo_plate"/>
+        <origin rpy="0 0 0" xyz="0.227 -0.11 0.473"/>
+    </joint>
+
+    <joint name="base_plate_to_servo_plate2" type="fixed">
+        <parent link="base_plate"/>
+        <child link="servo_plate2"/>
+        <origin rpy="0 0 0" xyz="-0.294 0.153 0.473"/>
+    </joint>
+
+    <!-- FIXED: Added limits -->
+    <joint name="claw_support_to_right_finger" type="revolute">
+        <parent link="claw_support"/>
+        <child link="right_finger"/>
+        <origin rpy="0 0 0" xyz="-0.040 0.13 -0.08"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="-0.4500" upper="0.000" effort="2.0" velocity="0.5"/>
+    </joint>
+
+    <!-- FIXED: Added limits - mimic joint also needs limits -->
+    <joint name="claw_support_to_left_finger" type="revolute">
+        <parent link="claw_support"/>
+        <child link="left_finger"/>
+        <origin rpy="0 0 0" xyz="-0.213 0.13 -0.08"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="-0.4500" upper="0.000" effort="2.0" velocity="0.5"/>
+        <mimic joint="claw_support_to_right_finger" multiplier="-1"/>
+    </joint>
+
+</robot>
