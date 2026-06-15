@@ -198,11 +198,13 @@ Pour utiliser le pipeline de planification de trajectoires :
 
 ### 6.1 Modèle du robot dans RViz 2
 
-> *À insérer : capture d'écran montrant le modèle complet du bras robotique dans RViz 2 avec tous les meshes STL chargés et affichés correctement.*
+> *<img width="1853" height="1169" alt="Screenshot from 2026-06-15 21-06-55" src="https://github.com/user-attachments/assets/0caabfe2-a7a3-47c2-ac39-7f8bbc788e1e" />
+Capture d'écran montrant le modèle complet du bras robotique dans RViz 2 avec tous les meshes STL chargés et affichés correctement.*
 
 ### 6.2 Visualisation des collisions (géométries simplifiées)
 
-> *À insérer : capture d'écran montrant les géométries de collision (cylindres et boîtes) en mode wireframe ou transparent.*
+> *<img width="1189" height="1168" alt="Screenshot from 2026-06-15 21-08-30" src="https://github.com/user-attachments/assets/ac55acdb-ba9a-4d35-ba47-71866bb04fac" />
+ Capture d'écran montrant les géométries de collision (cylindres et boîtes) en mode wireframe ou transparent.*
 
 ### 6.3 Planification de trajectoire avec MoveIt 2
 
